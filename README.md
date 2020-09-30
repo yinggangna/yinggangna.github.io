@@ -1,0 +1,2 @@
+# yinggangna.github.io
+hexoblog
