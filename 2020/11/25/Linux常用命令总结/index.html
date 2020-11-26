@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     WinGone&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Linux常用命令总结"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/2020/11/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2020-11-25T03:35:54.965Z" itemprop="datePublished">2020-11-25</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Linux常用命令总结"><a href="#Linux常用命令总结" class="headerlink" title="Linux常用命令总结"></a>Linux常用命令总结</h1><h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">暂时关闭防火墙</span></span><br><span class="line">systemctl  stop  firewalld</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">永久设置防火墙状态</span></span><br><span class="line">systemctl enable firewalld.service  #打开防火墙永久性生效，重启后不会复原 </span><br><span class="line">systemctl disable firewalld.service #关闭防火墙，永久性生效，重启后不会复原 </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="ps显示进程"><a href="#ps显示进程" class="headerlink" title="ps显示进程"></a>ps显示进程</h2><p>显示进程信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">ps</span><br><span class="line">ps -u root </span><br><span class="line">//显示root进程用户信息</span><br><span class="line">ps -ef </span><br><span class="line">//显示所有进程信息，连带命令行</span><br><span class="line">ps -ef|grep java </span><br><span class="line">//所有的java所有进程</span><br><span class="line">ps aux|grep java </span><br><span class="line">查看所有包含关键字java的进程，显示详细的运行信息</span><br><span class="line">ps –ef|grep tomcat </span><br><span class="line">查看所有有关tomcat的进程</span><br><span class="line">ps aux </span><br><span class="line">查看所有进程, 显示详细运行信息</span><br><span class="line">kill -9 19979 </span><br><span class="line">终止线程号位19979的进程</span><br><span class="line"></span><br><span class="line">ls -al </span><br><span class="line">查看当前目录文件，包含隐藏文件</span><br><span class="line"></span><br><span class="line">pwd </span><br><span class="line">查看当前所在目录</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="查看文件大小"><a href="#查看文件大小" class="headerlink" title="查看文件大小"></a>查看文件大小</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du [选项][文件]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>-a或-all 显示目录中个别文件的大小。<br>-b或-bytes 显示目录或文件大小时，以byte为单位。<br>-c或–total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。<br>-k或–kilobytes 以KB(1024bytes)为单位输出。<br>-m或–megabytes 以MB为单位输出。<br>-s或–summarize 仅显示总计，只列出最后加总的值。<br>-h或–human-readable 以K，M，G为单位，提高信息的可读性。<br>-x或–one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。<br>-L&lt;符号链接&gt;或–dereference&lt;符号链接&gt; 显示选项中所指定符号链接的源文件大小。<br>-S或–separate-dirs 显示个别目录的大小时，并不含其子目录的大小。<br>-X&lt;文件&gt;或–exclude-from=&lt;文件&gt; 在&lt;文件&gt;指定目录或文件。<br>–exclude=&lt;目录或文件&gt; 略过指定的目录或文件。<br>-D或–dereference-args 显示指定符号链接的源文件大小。<br>-H或–si 与-h参数相同，但是K，M，G是以1000为换算单位。<br>-l或–count-links 重复计算硬件链接的文件。</p>
+</blockquote>
+<p>常用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh /opt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h2><p>owenr、group、others三种身份各自有自己的r、w和x</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">修改权限： </span><br><span class="line">chmod 777 file.java</span><br><span class="line">//file.java的权限-rwxrwxrwx，r表示读、w表示写、x表示可执行</span><br><span class="line">r(read 读)、w(write 写)、x(execute 访问</span><br><span class="line">可以使用数字表示权限：</span><br><span class="line"></span><br><span class="line"><span class="meta">r-&gt;</span><span class="bash">4</span></span><br><span class="line"><span class="meta">w-&gt;</span><span class="bash">2</span></span><br><span class="line"><span class="meta">x-&gt;</span><span class="bash">1</span></span><br><span class="line">当文件权限为“rwxrwxrwx”时，分数是：</span><br><span class="line"></span><br><span class="line"><span class="meta">owner-&gt;</span><span class="bash">4+2+1=7</span></span><br><span class="line"></span><br><span class="line"><span class="meta">group-&gt;</span><span class="bash">4+2+1=7</span></span><br><span class="line"></span><br><span class="line"><span class="meta">others-&gt;</span><span class="bash">4+2+1=1</span></span><br><span class="line"></span><br><span class="line">此时文件的权限数字就是777</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -tnl | grep 443 （查看443端口是否被占用）</span><br><span class="line">root用户，用netstat -pnl | grep 443 （还可显示出占用本机443端口的进程PID）</span><br></pre></td></tr></table></figure>
+
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p>java javac <a target="_blank" rel="noopener" href="http://www.hollischuang.com/archives/105">jps</a> ,<a target="_blank" rel="noopener" href="http://www.hollischuang.com/archives/481">jstat</a> ,<a target="_blank" rel="noopener" href="http://www.hollischuang.com/archives/303">jmap</a>, <a target="_blank" rel="noopener" href="http://www.hollischuang.com/archives/110">jstack</a></p>
+<p>jps：显示当前所有java进程pid的命令。其他命令往往需要先通过jps命令获取java进程的pid。</p>
+<p>jstat + pid： 用于监控虚拟机各种运行状态信息的命令行工具。他可以显示本地或远程虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据</p>
+<p>jmap + pid：打印java堆相关的各种信息。当服务发生GC问题时，一般会使用jmap工具进行分析。</p>
+<p>jstack + pid：打印Java栈相关各种信息。jstack用于生成java虚拟机当前时刻的线程快照。</p>
+<h2 id="awk处理"><a href="#awk处理" class="headerlink" title="awk处理"></a>awk处理</h2><p>awk就是把文件<strong>逐行的读入</strong>，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理。</p>
+<p>awk是一个强大的<strong>文本分析</strong>工具，相对于grep的查找，sed的编辑，awk在其<strong>对数据分析并生成报告时</strong>，显得尤为强大。</p>
+<p>类比： awk–SQL中的Concat grep–SQL中的Select</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;&#123;pattern + action&#125;&#x27;</span> &#123;filenames&#125; <span class="comment">//用法</span></span><br><span class="line">ls | awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> <span class="comment">//用|隔开与命令连用</span></span><br><span class="line">last -n <span class="number">5</span> | awk  <span class="string">&#x27;&#123;print $1&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line">#awk -F: &#x27;/root/&#x27; /etc/passwd //搜索/etc/passwd文件中有root关键字的所有行</span><br><span class="line">	<span class="comment">//root:x:0:0:root:/root:/bin/bash</span></span><br></pre></td></tr></table></figure>
+
+<p>awk工作流程是这样的：先执行BEGING，然后读取文件，读入有/n换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0则表示所有域,1 表 示 第 一 个 域 , 1表示第一个域,1表示第一个域,n表示第n个域,随后开始执行模式所对应的动作action。接着开始读入第二条记录······直到所有的记录都读完，最后执行END操作。</p>
+<h2 id="sed编辑"><a href="#sed编辑" class="headerlink" title="sed编辑"></a>sed编辑</h2><p>Sed主要用来自动编辑一个或多个文件；简化对文件的反复操作；编写转换程序等。</p>
+<p>Linux sed命令是利用script来处理文本文件。sed可依照script的指令，来处理、编辑文本文件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sed -e 4a\newLine testfile <span class="comment">//在文件testfile第四行添加内容newLine</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">&#x27;2d&#x27;</span> <span class="comment">//删除文件第二行</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">&#x27;2,5d&#x27;</span> <span class="comment">//删除第2到5行</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">&#x27;2，$d&#x27;</span> <span class="comment">//删除第2到最后行</span></span><br><span class="line">nl /etc/passwd | sed <span class="string">&#x27;2a drink tea&#x27;</span><span class="comment">//在第二行后添加行</span></span><br><span class="line"><span class="number">12345</span></span><br><span class="line">a ：新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)～</span><br><span class="line">c ：取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</span><br><span class="line">d ：删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</span><br><span class="line">i ：插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</span><br><span class="line">p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运行～</span><br><span class="line">s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 <span class="number">1</span>,20s/old/<span class="keyword">new</span>/g 就是啦！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="grep查找行"><a href="#grep查找行" class="headerlink" title="grep查找行"></a>grep查找行</h2><p>Linux grep命令用于查找文件里符合条件的字符串。</p>
+<p><strong>grep</strong>（global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。</p>
+<p><code>grep -H &#39;spring&#39; *.xml</code> 查找所以有的包含spring的xml文件</p>
+<p><code>grep &#39;test&#39; d*</code> 显示所有以d开头的文件中包含test的行。</p>
+<p><code>grep &#39;test&#39; aa bb cc</code> 显示在aa，bb，cc文件中匹配test的行。</p>
+<p><code>grep &#39;[a-z]\&#123;5\&#125;&#39; aa</code> 显示所有包含每个字符串至少有5个连续小写字符的字符串的行。</p>
+<h2 id="sort排序"><a href="#sort排序" class="headerlink" title="sort排序"></a>sort排序</h2><p>Linux sort命令用于将文本文件内容加以排序。</p>
+<p>sort可针对文本文件的内容，以行为单位来排序</p>
+<p>按照每行首字母ASCII编码来排序， 汉字也可按照读音字母顺序排序，汉字行排在字母行之后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort mi.txt &#x2F;&#x2F;将mi.txt内容按行首字母的编码次序来排</span><br></pre></td></tr></table></figure>
+
+<h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h2><p>提取指定网页</p>
+<ul>
+<li>显示头信息</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>显示通信过程</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看议定书</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --trace-ascii output.txt https://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看时间</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --trace-ascii output.txt --trace-time https://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">curl http:<span class="comment">//www.linux.com &gt;&gt; linux.html  //使用linux重定向功能保存访问的网页</span></span><br><span class="line"> curl -o linux.html http:<span class="comment">//www.linux.com //使用curl的内置option:-o(小写)保存网页</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>文件下载</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl uri filename --silent|progress</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>–silent：不显示进度条</li>
+<li>–progress：显示进度条</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> ~]<span class="comment"># curl https://avatar.csdnimg.cn/3/5/E/1_meituantech_1564971608.jpg -omeituan.jpg --progress</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上传文件<br>语法：<code>$ curl --form upload=@localfilename --form press=OK [URL]</code></li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> ~]<span class="comment"># curl --form upload=@baidu.html --form press=OK url</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>还有诸如代理，cookie等等功能。</p>
+<h2 id="head"><a href="#head" class="headerlink" title="head"></a>head</h2><p>默认是显示文本开头前10行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+
+<p>显示开头前k行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">head -k &#x2F;etc&#x2F;passwd</span><br><span class="line">head -n k &#x2F;etc&#x2F;passwd（注意和下面的有-的区别）</span><br><span class="line">head -n +k &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+
+<p>除最后k行外，显示剩余全部内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n -k &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>命令格式</th>
+<th>运行结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mv 文件名 文件名</td>
+<td>将源文件名改为目标文件名</td>
+</tr>
+<tr>
+<td>mv 文件名 目录名</td>
+<td>将文件移动到目标目录</td>
+</tr>
+<tr>
+<td>mv 目录名 目录名</td>
+<td>目标目录已存在，将源目录 移动到目标目录；目标 目录不存在则改名</td>
+</tr>
+<tr>
+<td>mv 目录名 文件名</td>
+<td>出错</td>
+</tr>
+</tbody></table>
+<h2 id="查看内核版本"><a href="#查看内核版本" class="headerlink" title="查看内核版本"></a>查看内核版本</h2><p>uname命令用于查看内核版本<br><img src="https://img-blog.csdnimg.cn/20200721133752825.png" alt="在这里插入图片描述"></p>
+<h2 id="查看linux系统ip"><a href="#查看linux系统ip" class="headerlink" title="查看linux系统ip"></a>查看linux系统ip</h2><p>查看linux的ip地址：可以用命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看ip是否被占用"><a href="#查看ip是否被占用" class="headerlink" title="查看ip是否被占用"></a>查看ip是否被占用</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:8080</span><br></pre></td></tr></table></figure>
+
+<h2 id="uptime命令使用"><a href="#uptime命令使用" class="headerlink" title="uptime命令使用"></a>uptime命令使用</h2><p>uptime命令能够打印系统总共运行了多长时间和系统的平均负载。uptime命令可以显示的信息显示依次为：现在时间、系统已经运行了多长时间、目前有多少登陆用户、系统在过去的1分钟、5分钟和15分钟内的平均负载。</p>
+<p>用help参数参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">[shared@localhost~]$</span><span class="bash"> uptime --<span class="built_in">help</span></span></span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line"> uptime [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"> -p, --pretty   show uptime in pretty format </span><br><span class="line"> -h, --help     display this help and exit </span><br><span class="line"> -s, --since    system up since </span><br><span class="line"> -V, --version  output version information and exit</span><br><span class="line"></span><br><span class="line">For more details see uptime(1).</span><br><span class="line"><span class="meta">[shared@localhost~]$</span><span class="bash"> uptime -V</span></span><br><span class="line">uptime from procps-ng 3.3.10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Options:</p>
+<ul>
+<li>-p, –pretty show uptime in pretty format //比较美观的打印</li>
+<li>-h, –help display this help and exit // 查看参数帮助</li>
+<li>-s, –since system up since // 查看系统当前时间</li>
+<li>-V, –version output version information and exit // 查看版本</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20200721131423692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQ0MjczOTE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="telnet命令使用"><a href="#telnet命令使用" class="headerlink" title="telnet命令使用"></a>telnet命令使用</h2><p>不管在window还是linux系统要校验某台服务器是否可以ping通，都可以使用命令，如果要加上断口的，linux可以使用telnet命令<br><code>语法：telnet ip port</code>                      </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 8080</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/11/25/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/11/26/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Hello World
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/11/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">设计模式</div>
+      </a>
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2018-2020
+        <i class="ri-heart-fill heart_icon"></i> WangYinggang
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="WinGone&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/1.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/2.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=36897723&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

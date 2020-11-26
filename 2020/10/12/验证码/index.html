@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    验证码 |  WinGone&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="验证码-验证码"
+  class="article article-type-验证码"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  验证码
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/10/12/%E9%AA%8C%E8%AF%81%E7%A0%81/" class="article-date">
+  <time datetime="2020-10-12T03:48:33.000Z" itemprop="datePublished">2020-10-12</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">12 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h1><h2 id="1-生成N位验证码工具类"><a href="#1-生成N位验证码工具类" class="headerlink" title="1 生成N位验证码工具类"></a>1 生成N位验证码工具类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 随机生成验证码工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidateCodeUtils</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 随机生成验证码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> length 长度为4位或者6位</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">generateValidateCode</span><span class="params">(<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">        Integer code =<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(length == <span class="number">4</span>)&#123;</span><br><span class="line">            code = <span class="keyword">new</span> Random().nextInt(<span class="number">9999</span>);<span class="comment">//生成随机数，最大为9999</span></span><br><span class="line">            <span class="keyword">if</span>(code &lt; <span class="number">1000</span>)&#123;</span><br><span class="line">                code = code + <span class="number">1000</span>;<span class="comment">//保证随机数为4位数字</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(length == <span class="number">6</span>)&#123;</span><br><span class="line">            code = <span class="keyword">new</span> Random().nextInt(<span class="number">999999</span>);<span class="comment">//生成随机数，最大为999999</span></span><br><span class="line">            <span class="keyword">if</span>(code &lt; <span class="number">100000</span>)&#123;</span><br><span class="line">                code = code + <span class="number">100000</span>;<span class="comment">//保证随机数为6位数字</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;只能生成4位或6位数字验证码&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 随机生成指定长度字符串验证码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> length 长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">generateValidateCode4String</span><span class="params">(<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">        Random rdm = <span class="keyword">new</span> Random();</span><br><span class="line">        String hash1 = Integer.toHexString(rdm.nextInt());</span><br><span class="line">        String capstr = hash1.substring(<span class="number">0</span>, length);</span><br><span class="line">        <span class="keyword">return</span> capstr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-短信验证码发送"><a href="#2-短信验证码发送" class="headerlink" title="2  短信验证码发送"></a>2  短信验证码发送</h2><h3 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h3><h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-dysmsapi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.DefaultAcsClient;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.IAcsClient;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.exceptions.ClientException;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.http.MethodType;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.profile.DefaultProfile;</span><br><span class="line"><span class="keyword">import</span> com.aliyuncs.profile.IClientProfile;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 短信发送工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SMSUtils</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String VALIDATE_CODE = <span class="string">&quot;SMS_159620392&quot;</span>;<span class="comment">//发送短信验证码</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ORDER_NOTICE = <span class="string">&quot;SMS_159771588&quot;</span>;<span class="comment">//体检预约成功通知</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 发送短信</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> phoneNumbers</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> ClientException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendShortMessage</span><span class="params">(String templateCode,String phoneNumbers,String param)</span> <span class="keyword">throws</span> ClientException</span>&#123;</span><br><span class="line">		<span class="comment">// 设置超时时间-可自行调整</span></span><br><span class="line">		System.setProperty(<span class="string">&quot;sun.net.client.defaultConnectTimeout&quot;</span>, <span class="string">&quot;10000&quot;</span>);</span><br><span class="line">		System.setProperty(<span class="string">&quot;sun.net.client.defaultReadTimeout&quot;</span>, <span class="string">&quot;10000&quot;</span>);</span><br><span class="line">		<span class="comment">// 初始化ascClient需要的几个参数</span></span><br><span class="line">		<span class="keyword">final</span> String product = <span class="string">&quot;Dysmsapi&quot;</span>;<span class="comment">// 短信API产品名称（短信产品名固定，无需修改）</span></span><br><span class="line">		<span class="keyword">final</span> String domain = <span class="string">&quot;dysmsapi.aliyuncs.com&quot;</span>;<span class="comment">// 短信API产品域名（接口地址固定，无需修改）</span></span><br><span class="line">		<span class="comment">// 替换成你的AK</span></span><br><span class="line">		<span class="keyword">final</span> String accessKeyId = <span class="string">&quot;LTAIak3CfAehK7cE&quot;</span>;<span class="comment">// 你的accessKeyId,参考本文档步骤2</span></span><br><span class="line">		<span class="keyword">final</span> String accessKeySecret = <span class="string">&quot;zsykwhTIFa48f8fFdU06GOKjHWHel4&quot;</span>;<span class="comment">// 你的accessKeySecret，参考本文档步骤2</span></span><br><span class="line">		<span class="comment">// 初始化ascClient,暂时不支持多region（请勿修改）</span></span><br><span class="line">		IClientProfile profile = DefaultProfile.getProfile(<span class="string">&quot;cn-hangzhou&quot;</span>, accessKeyId, accessKeySecret);</span><br><span class="line">		DefaultProfile.addEndpoint(<span class="string">&quot;cn-hangzhou&quot;</span>, <span class="string">&quot;cn-hangzhou&quot;</span>, product, domain);</span><br><span class="line">		IAcsClient acsClient = <span class="keyword">new</span> DefaultAcsClient(profile);</span><br><span class="line">		<span class="comment">// 组装请求对象</span></span><br><span class="line">		SendSmsRequest request = <span class="keyword">new</span> SendSmsRequest();</span><br><span class="line">		<span class="comment">// 使用post提交</span></span><br><span class="line">		request.setMethod(MethodType.POST);</span><br><span class="line">		<span class="comment">// 必填:待发送手机号。支持以逗号分隔的形式进行批量调用，批量上限为1000个手机号码,批量调用相对于单条调用及时性稍有延迟,验证码类型的短信推荐使用单条调用的方式</span></span><br><span class="line">		request.setPhoneNumbers(phoneNumbers);</span><br><span class="line">		<span class="comment">// 必填:短信签名-可在短信控制台中找到</span></span><br><span class="line">		request.setSignName(<span class="string">&quot;传智健康&quot;</span>);</span><br><span class="line">		<span class="comment">// 必填:短信模板-可在短信控制台中找到</span></span><br><span class="line">		request.setTemplateCode(templateCode);</span><br><span class="line">		<span class="comment">// 可选:模板中的变量替换JSON串,如模板内容为&quot;亲爱的$&#123;name&#125;,您的验证码为$&#123;code&#125;&quot;时,此处的值为</span></span><br><span class="line">		<span class="comment">// 友情提示:如果JSON中需要带换行符,请参照标准的JSON协议对换行符的要求,比如短信内容中包含\r\n的情况在JSON中需要表示成\\r\\n,否则会导致JSON在服务端解析失败</span></span><br><span class="line">		request.setTemplateParam(<span class="string">&quot;&#123;\&quot;code\&quot;:\&quot;&quot;</span>+param+<span class="string">&quot;\&quot;&#125;&quot;</span>);</span><br><span class="line">		<span class="comment">// 可选-上行短信扩展码(扩展码字段控制在7位或以下，无特殊需求用户请忽略此字段)</span></span><br><span class="line">		<span class="comment">// request.setSmsUpExtendCode(&quot;90997&quot;);</span></span><br><span class="line">		<span class="comment">// 可选:outId为提供给业务方扩展字段,最终在短信回执消息中将此值带回给调用者</span></span><br><span class="line">		<span class="comment">// request.setOutId(&quot;yourOutId&quot;);</span></span><br><span class="line">		<span class="comment">// 请求失败这里会抛ClientException异常</span></span><br><span class="line">		SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);</span><br><span class="line">		<span class="keyword">if</span> (sendSmsResponse.getCode() != <span class="keyword">null</span> &amp;&amp; sendSmsResponse.getCode().equals(<span class="string">&quot;OK&quot;</span>)) &#123;</span><br><span class="line">			<span class="comment">// 请求成功</span></span><br><span class="line">			System.out.println(<span class="string">&quot;请求成功&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h3><h4 id="依赖-1"><a href="#依赖-1" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.tencentcloudapi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tencentcloud-sdk-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.qcloudsms<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>qcloudsms<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="工具类-1"><a href="#工具类-1" class="headerlink" title="工具类"></a>工具类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> wang.yinggang.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.common.Credential;</span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.common.exception.TencentCloudSDKException;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入可选配置类</span></span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.common.profile.ClientProfile;</span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.common.profile.HttpProfile;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入对应SMS模块的client</span></span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.sms.v20190711.SmsClient;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入要请求接口对应的request response类</span></span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;</span><br><span class="line"><span class="keyword">import</span> com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;</span><br><span class="line"><span class="keyword">import</span> wang.yinggang.constant.TSSMSConstants;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Tencent Cloud Sms Sendsms</span></span><br><span class="line"><span class="comment"> * https://cloud.tencent.com/document/product/382/38778</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmSUtils</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sendSms</span><span class="params">(String valcode,String[] phoneNumbers )</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">/* 必要步骤：</span></span><br><span class="line"><span class="comment">             * 实例化一个认证对象，入参需要传入腾讯云账户密钥对secretId，secretKey。</span></span><br><span class="line"><span class="comment">             * 这里采用的是从环境变量读取的方式，需要在环境变量中先设置这两个值。</span></span><br><span class="line"><span class="comment">             * 你也可以直接在代码中写死密钥对，但是小心不要将代码复制、上传或者分享给他人，</span></span><br><span class="line"><span class="comment">             * 以免泄露密钥对危及你的财产安全。</span></span><br><span class="line"><span class="comment">             * CAM密匙查询: https://console.cloud.tencent.com/cam/capi*/</span></span><br><span class="line">            Credential cred = <span class="keyword">new</span> Credential(TSSMSConstants.SMSSECREID, TSSMSConstants.SMSSECREKEY);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 实例化一个http选项，可选，没有特殊需求可以跳过</span></span><br><span class="line">            HttpProfile httpProfile = <span class="keyword">new</span> HttpProfile();</span><br><span class="line">            <span class="comment">// 设置代理</span></span><br><span class="line"><span class="comment">//            httpProfile.setProxyHost(&quot;host&quot;);</span></span><br><span class="line"><span class="comment">//            httpProfile.setProxyPort(port);</span></span><br><span class="line">            <span class="comment">/* SDK默认使用POST方法。</span></span><br><span class="line"><span class="comment">             * 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求 */</span></span><br><span class="line">            httpProfile.setReqMethod(<span class="string">&quot;POST&quot;</span>);</span><br><span class="line">            <span class="comment">/* SDK有默认的超时时间，非必要请不要进行调整</span></span><br><span class="line"><span class="comment">             * 如有需要请在代码中查阅以获取最新的默认值 */</span></span><br><span class="line">            httpProfile.setConnTimeout(<span class="number">60</span>);</span><br><span class="line">            <span class="comment">/* SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务</span></span><br><span class="line"><span class="comment">             * 则必须手动指定域名，例如sms的上海金融区域名： sms.ap-shanghai-fsi.tencentcloudapi.com */</span></span><br><span class="line">            httpProfile.setEndpoint(<span class="string">&quot;sms.tencentcloudapi.com&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 非必要步骤:</span></span><br><span class="line"><span class="comment">             * 实例化一个客户端配置对象，可以指定超时时间等配置 */</span></span><br><span class="line">            ClientProfile clientProfile = <span class="keyword">new</span> ClientProfile();</span><br><span class="line">            <span class="comment">/* SDK默认用TC3-HMAC-SHA256进行签名</span></span><br><span class="line"><span class="comment">             * 非必要请不要修改这个字段 */</span></span><br><span class="line">            clientProfile.setSignMethod(<span class="string">&quot;HmacSHA256&quot;</span>);</span><br><span class="line">            clientProfile.setHttpProfile(httpProfile);</span><br><span class="line">            <span class="comment">/* 实例化要请求产品(以sms为例)的client对象</span></span><br><span class="line"><span class="comment">             * 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量 */</span></span><br><span class="line">            SmsClient client = <span class="keyword">new</span> SmsClient(cred, <span class="string">&quot;ap-guangzhou&quot;</span>, clientProfile);</span><br><span class="line">            <span class="comment">/* 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数</span></span><br><span class="line"><span class="comment">             * 你可以直接查询SDK源码确定接口有哪些属性可以设置</span></span><br><span class="line"><span class="comment">             * 属性可能是基本类型，也可能引用了另一个数据结构</span></span><br><span class="line"><span class="comment">             * 推荐使用IDE进行开发，可以方便的跳转查阅各个接口和数据结构的文档说明 */</span></span><br><span class="line">            SendSmsRequest req = <span class="keyword">new</span> SendSmsRequest();</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 填充请求参数,这里request对象的成员变量即对应接口的入参</span></span><br><span class="line"><span class="comment">             * 你可以通过官网接口文档或跳转到request对象的定义处查看请求参数的定义</span></span><br><span class="line"><span class="comment">             * 基本类型的设置:</span></span><br><span class="line"><span class="comment">             * 帮助链接：</span></span><br><span class="line"><span class="comment">             * 短信控制台: https://console.cloud.tencent.com/sms/smslist</span></span><br><span class="line"><span class="comment">             * sms helper: https://cloud.tencent.com/document/product/382/3773 */</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 短信应用ID: 短信SdkAppid在 [短信控制台] 添加应用后生成的实际SdkAppid，示例如1400006666 */</span></span><br><span class="line">            String appid = TSSMSConstants.SMSAPPID;</span><br><span class="line">            req.setSmsSdkAppid(appid);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 短信签名内容: 使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台] 查看 */</span></span><br><span class="line">            String sign = TSSMSConstants.SMSSIGN;</span><br><span class="line">            req.setSign(sign);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 国际/港澳台短信 senderid: 国内短信填空，默认未开通，如需开通请联系 [sms helper] */</span></span><br><span class="line"><span class="comment">//            String senderid = &quot;xxx&quot;;</span></span><br><span class="line"><span class="comment">//            req.setSenderId(senderid);</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 用户的 session 内容: 可以携带用户侧 ID 等上下文信息，server 会原样返回 */</span></span><br><span class="line"><span class="comment">//            String session = &quot;xxx&quot;;</span></span><br><span class="line"><span class="comment">//            req.setSessionContext(session);</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 短信码号扩展号: 默认未开通，如需开通请联系 [sms helper] */</span></span><br><span class="line"><span class="comment">//            String extendcode = &quot;xxx&quot;;</span></span><br><span class="line"><span class="comment">//            req.setExtendCode(extendcode);</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 模板 ID: 必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台] 查看 */</span></span><br><span class="line">            String templateID = TSSMSConstants.SMSTEMPLATEID;</span><br><span class="line">            req.setTemplateID(templateID);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号]</span></span><br><span class="line"><span class="comment">             * 示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号*/</span></span><br><span class="line"><span class="comment">//            String[] phoneNumbers = &#123;&quot;+8621212313123&quot;, &quot;+8612345678902&quot;, &quot;+8612345678903&quot;&#125;;</span></span><br><span class="line">            req.setPhoneNumberSet(phoneNumbers);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 模板参数: 若无模板参数，则设置为空*/</span></span><br><span class="line">            String[] templateParams = &#123;valcode&#125;;</span><br><span class="line">            req.setTemplateParamSet(templateParams);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 通过 client 对象调用 SendSms 方法发起请求。注意请求方法名与请求对象是对应的</span></span><br><span class="line"><span class="comment">             * 返回的 res 是一个 SendSmsResponse 类的实例，与请求对象对应 */</span></span><br><span class="line">            SendSmsResponse res = client.SendSms(req);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 输出json格式的字符串回包</span></span><br><span class="line">            System.out.println(SendSmsResponse.toJsonString(res));</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 也可以取出单个值，你可以通过官网接口文档或跳转到response对象的定义处查看返回字段的定义</span></span><br><span class="line">            <span class="comment">//System.out.println(res.getRequestId());</span></span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (TencentCloudSDKException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="常量类"><a href="#常量类" class="headerlink" title="常量类"></a>常量类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> wang.yinggang.constant;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 常量类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TXSMSConstants</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 短信 appid</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SMSAPPID=<span class="string">&quot;1400438227&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 腾讯云账户密钥对: secretId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SMSSECREID=<span class="string">&quot;AKIDkETgdJXRr3zf8ghzlIZaOq1vZx5w2v61g&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 腾讯云账户密钥对: secretKey</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SMSSECREKEY=<span class="string">&quot;oLbbKn45qKkv30cxKRH3aFjxxiFbc0f6q&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * SmsSdkAppid</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SMSSDKAPPID=<span class="string">&quot;1400438227&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * sms sign   : sms签名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SMSSIGN=<span class="string">&quot;王迎港个人学习&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * sms 短信模板id:</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String SMSTEMPLATEID=<span class="string">&quot;746688&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> wang.yinggang.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> wang.yinggang.utils.TXSmsUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SendSms</span><span class="params">()</span></span>&#123;</span><br><span class="line">        TXSmsUtils.sendSms(<span class="string">&quot;1234&quot;</span>, <span class="keyword">new</span> String[] &#123;<span class="string">&quot;86***********&quot;</span>&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-验证码前端代码"><a href="#3-验证码前端代码" class="headerlink" title="3 验证码前端代码"></a>3 验证码前端代码</h2><h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-row&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>验证码<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">&quot;orderInfo.validateCode&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;input-clear&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入验证码&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="sendValidateCode"><a href="#sendValidateCode" class="headerlink" title="sendValidateCode"></a>sendValidateCode</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送验证码</span></span><br><span class="line"><span class="function"><span class="title">sendValidateCode</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> telephone = <span class="built_in">this</span>.orderInfo.telephone;</span><br><span class="line">    <span class="keyword">if</span> (!checkTelephone(telephone))&#123;</span><br><span class="line">        <span class="built_in">this</span>.$message.error(<span class="string">&quot;请输入正确的手机号&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    validateCodeButton = $(<span class="string">&quot;#validateCodeButton&quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    clock = <span class="built_in">window</span>.setInterval(doLoop,<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">    axios.post(<span class="string">&quot;/validateCode/send4Order.do?telephone=&quot;</span>+telephone).then(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!res.data.flag)&#123;</span><br><span class="line">            <span class="built_in">this</span>.$message.error(res.data.message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="手机号校验checkTelephone"><a href="#手机号校验checkTelephone" class="headerlink" title="手机号校验checkTelephone"></a>手机号校验checkTelephone</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkTelephone</span>(<span class="params">telephone</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg=<span class="regexp">/^[1][3,4,5,7,8][0-9]&#123;9&#125;$/</span>;</span><br><span class="line">    <span class="keyword">if</span> (!reg.test(telephone)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定时器doLoop"><a href="#定时器doLoop" class="headerlink" title="定时器doLoop"></a>定时器doLoop</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clock = <span class="string">&#x27;&#x27;</span>;<span class="comment">//定时器对象，用于页面30秒倒计时效果</span></span><br><span class="line"><span class="keyword">var</span> nums = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> validateCodeButton;</span><br><span class="line"><span class="comment">//基于定时器实现30秒倒计时效果</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doLoop</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    validateCodeButton.disabled = <span class="literal">true</span>;<span class="comment">//将按钮置为不可点击</span></span><br><span class="line">    nums--;</span><br><span class="line">    <span class="keyword">if</span> (nums &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        validateCodeButton.value = nums + <span class="string">&#x27;秒后重新获取&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">clearInterval</span>(clock); <span class="comment">//清除js定时器</span></span><br><span class="line">        validateCodeButton.disabled = <span class="literal">false</span>;</span><br><span class="line">        validateCodeButton.value = <span class="string">&#x27;重新获取验证码&#x27;</span>;</span><br><span class="line">        nums = <span class="number">30</span>; <span class="comment">//重置时间</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 验证码</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/validateCode&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidateCodeController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JedisPool jedisPool;</span><br><span class="line">    <span class="comment">//体检预约发送验证码</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/send4Order&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">send4Order</span><span class="params">(String telephone)</span></span>&#123;</span><br><span class="line">        <span class="comment">//工具类获取四位验证码</span></span><br><span class="line">        String validateCode = ValidateCodeUtils.generateValidateCode(<span class="number">4</span>).toString();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//发送短信</span></span><br><span class="line">            TXSmsUtils.sendSms(validateCode, <span class="keyword">new</span> String[]&#123;telephone&#125;);</span><br><span class="line">            <span class="comment">//发送验证码 并且保存到redis</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Result(<span class="keyword">false</span>, MessageConstant.SEND_VALIDATECODE_FAIL);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//key手机号加上字符串标识作为key</span></span><br><span class="line">        jedisPool.getResource().setex(telephone+<span class="string">&quot;&quot;</span>+RedisMessageConstant.SENDTYPE_ORDER,<span class="number">300</span>,validateCode);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Result(<span class="keyword">true</span>, MessageConstant.SEND_VALIDATECODE_SUCCESS);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/10/12/%E9%AA%8C%E8%AF%81%E7%A0%81/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2020/10/14/vue/vue%E7%9A%84%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            vue
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/10/12/freemarker/freemarker%20%E5%85%A5%E9%97%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">freemarker入门</div>
+      </a>
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2018-2020
+        <i class="ri-heart-fill heart_icon"></i> WangYinggang
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="WinGone&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/1.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/2.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=36897723&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
