@@ -182,24 +182,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/11/26/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>设计模式</title>
     <url>/2020/11/22/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="1-单例模式的定义"><a href="#1-单例模式的定义" class="headerlink" title="1 单例模式的定义"></a>1 单例模式的定义</h3><ul>
@@ -1082,25 +1064,6 @@
 <h2 id="java面试题-设计模式-26题"><a href="#java面试题-设计模式-26题" class="headerlink" title="java面试题_设计模式(26题)"></a>java面试题_设计模式(26题)</h2><p><a href="./设计模式/java面试题_设计模式(26题).pdf">点击进入</a></p>
 <h1 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h1><h2 id="集合框架-1"><a href="#集合框架-1" class="headerlink" title="集合框架"></a>集合框架</h2><p><a href="./集合框架/集合框架.pdf">点击进入</a></p>
 ]]></content>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>综合面试题</title>
-    <url>/2020/10/24/%E9%9D%A2%E8%AF%95/ms/</url>
-    <content><![CDATA[<h1 id="综合面试题"><a href="#综合面试题" class="headerlink" title="综合面试题"></a>综合面试题</h1><h2 id="java面试题整合"><a href="#java面试题整合" class="headerlink" title="java面试题整合"></a>java面试题整合</h2><p><a href="./java面试题整合.pdf">java面试题整合</a><br></p>
-<h2 id="面试总结"><a href="#面试总结" class="headerlink" title="面试总结"></a>面试总结</h2><p><a href="./面试总结.pdf">面试总结</a><br></p>
-<h2 id="JAVA核心面试知识整理"><a href="#JAVA核心面试知识整理" class="headerlink" title="JAVA核心面试知识整理"></a>JAVA核心面试知识整理</h2><p><a href="./JAVA核心面试知识整理.pdf">JAVA核心面试知识整理</a><br></p>
-<h2 id="互联网大厂面试题库大全"><a href="#互联网大厂面试题库大全" class="headerlink" title="互联网大厂面试题库大全"></a>互联网大厂面试题库大全</h2><p><a href="./互联网大厂面试题库大全.pdf">互联网大厂面试题库大全</a><br></p>
-<h2 id="互联网各大厂Java面试题库大全"><a href="#互联网各大厂Java面试题库大全" class="headerlink" title="互联网各大厂Java面试题库大全"></a>互联网各大厂Java面试题库大全</h2><p><a href="./互联网各大厂Java面试题库大全.pdf">互联网各大厂Java面试题库大全</a><br></p>
-<h2 id="java面试题整合-1"><a href="#java面试题整合-1" class="headerlink" title="java面试题整合"></a>java面试题整合</h2><p><a href="./java面试题整合.pdf">java面试题整合</a><br></p>
-<h2 id="整理的多家公司常见面试题库350道"><a href="#整理的多家公司常见面试题库350道" class="headerlink" title="整理的多家公司常见面试题库350道"></a>整理的多家公司常见面试题库350道</h2><p><a href="./整理的多家公司常见面试题库350道.pdf">整理的多家公司常见面试题库350道</a><br></p>
-<h2 id="基础及语法篇169道"><a href="#基础及语法篇169道" class="headerlink" title="基础及语法篇169道"></a>基础及语法篇169道</h2><p><a href="./基础及语法篇169道.pdf">基础及语法篇169道</a><br></p>
-]]></content>
-      <tags>
-        <tag>面试</tag>
-      </tags>
   </entry>
   <entry>
     <title>SpringBoot+mybatis-plus</title>
