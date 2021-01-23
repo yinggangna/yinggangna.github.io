@@ -95,7 +95,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="1-启动类"><a href="#1-启动类" class="headerlink" title="1.启动类"></a>1.启动类</h3><p>创建包com.changgou.goods 包下创建启动类</p>
+  <h3 id="1-启动类"><a href="#1-启动类" class="headerlink" title="1.启动类"></a>1.启动类</h3><p>创建包com.yinggang.goods 包下创建启动类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@MapperScan(basePackages = &#123;&quot;dao&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoodsApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(GoodsApplication.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong><em>注意：@MapperScan是tk.mybatis.spring.annotation包下的，用于扫描Mapper接口</em></strong> </p>
@@ -166,7 +166,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BrandServiceImpl</span> <span class="keyword">implements</span> <span class="title">BrandService</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BrandMapper brandMapper;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Brand&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> brandMapper.selectAll();</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>（3）控制层</p>
-<p>控制层  com.changgou.goods包下创建controller包  ，包下创建类</p>
+<p>控制层  com.yinggang.goods包下创建controller包  ，包下创建类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/brand&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BrandController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BrandService brandService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">findAll</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;Brand&gt; brandList = brandService.findAll();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Result(<span class="keyword">true</span>, StatusCode.OK,<span class="string">&quot;查询成功&quot;</span>,brandList) ;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-2-根据ID查询"><a href="#3-2-根据ID查询" class="headerlink" title="3.2 根据ID查询"></a>3.2 根据ID查询</h4><p>（1） 业务层接口</p>
@@ -317,9 +317,9 @@
       </a>
     
     
-      <a href="/2020/04/06/Lua%E8%84%9A%E6%9C%AC/" class="article-nav-link">
+      <a href="/2020/05/04/zip/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">lua入门</div>
+        <div class="article-nav-title">EXCEL,CSV数据流写入ZIP文件</div>
       </a>
     
   </nav>
@@ -334,7 +334,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2018-2020
+        2018-2021
         <i class="ri-heart-fill heart_icon"></i> WangYinggang
       </li>
     </ul>

@@ -1,0 +1,162 @@
+<pre><code>layout: &quot;docker应用的部署&quot;
+title: &quot;docker应用的部署&quot;
+date: 2020-12-09 13:48:33
+comments: true
+tags: docker</code></pre>
+<h2 id="Docker-应用部署"><a href="#Docker-应用部署" class="headerlink" title="Docker 应用部署"></a>Docker 应用部署</h2><h3 id="一、部署MySQL"><a href="#一、部署MySQL" class="headerlink" title="一、部署MySQL"></a>一、部署MySQL</h3><ol>
+<li>搜索mysql镜像</li>
+</ol>
+<pre><code class="shell">docker search mysql</code></pre>
+<ol start="2">
+<li>拉取mysql镜像</li>
+</ol>
+<pre><code class="shell">docker pull mysql:5.6</code></pre>
+<ol start="3">
+<li>创建容器，设置端口映射、目录映射</li>
+</ol>
+<pre><code class="shell"># 在/root目录下创建mysql目录用于存储mysql数据信息
+mkdir ~/mysql
+cd ~/mysql</code></pre>
+<pre><code class="shell">docker run -id \
+-p 3307:3306 \
+--name=c_mysql \
+-v $PWD/conf:/etc/mysql/conf.d \
+-v $PWD/logs:/logs \
+-v $PWD/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+mysql:5.6</code></pre>
+<ul>
+<li>参数说明：<ul>
+<li><strong>-p 3307:3306</strong>：将容器的 3306 端口<strong>映射</strong>到宿主机的 3307 端口。</li>
+<li><strong>-v $PWD/conf:/etc/mysql/conf.d</strong>：将主机当前目录下的 conf/my.cnf <strong>挂载</strong>到容器的 /etc/mysql/my.cnf。配置目录</li>
+<li><strong>-v $PWD/logs:/logs</strong>：将主机当前目录下的 logs 目录<strong>挂载</strong>到容器的 /logs。日志目录</li>
+<li><strong>-v $PWD/data:/var/lib/mysql</strong> ：将主机当前目录下的data目录<strong>挂载</strong>到容器的 /var/lib/mysql 。数据目录</li>
+<li><strong>-e MYSQL_ROOT_PASSWORD=123456：</strong>初始化 root 用户的密码。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>进入容器，操作mysql</li>
+</ol>
+<pre><code class="shell">docker exec –it c_mysql /bin/bash</code></pre>
+<ol start="5">
+<li>使用外部机器连接容器中的mysql</li>
+</ol>
+<p><img src=".%5C1573636765632.png" alt="1573636765632"></p>
+<h3 id="二、部署Tomcat"><a href="#二、部署Tomcat" class="headerlink" title="二、部署Tomcat"></a>二、部署Tomcat</h3><ol>
+<li>搜索tomcat镜像</li>
+</ol>
+<pre><code class="shell">docker search tomcat</code></pre>
+<ol start="2">
+<li>拉取tomcat镜像</li>
+</ol>
+<pre><code class="shell">docker pull tomcat</code></pre>
+<ol start="3">
+<li>创建容器，设置端口映射、目录映射</li>
+</ol>
+<pre><code class="shell"># 在/root目录下创建tomcat目录用于存储tomcat数据信息
+mkdir ~/tomcat
+cd ~/tomcat</code></pre>
+<pre><code class="shell">docker run -id --name=c_tomcat \
+-p 8080:8080 \
+-v $PWD:/usr/local/tomcat/webapps \
+tomcat </code></pre>
+<ul>
+<li><p>参数说明：</p>
+<ul>
+<li><p><strong>-p 8080:8080：</strong>将容器的8080端口<strong>映射</strong>到主机的8080端口</p>
+<p><strong>-v $PWD:/usr/local/tomcat/webapps：</strong>将主机中当前目录<strong>挂载</strong>到容器的webapps</p>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>使用外部机器访问tomcat</li>
+</ol>
+<p><img src="./imgs%5C1573649804623.png" alt="1573649804623"></p>
+<h3 id="三、部署Nginx"><a href="#三、部署Nginx" class="headerlink" title="三、部署Nginx"></a>三、部署Nginx</h3><ol>
+<li>搜索nginx镜像</li>
+</ol>
+<pre><code class="shell">docker search nginx</code></pre>
+<ol start="2">
+<li>拉取nginx镜像</li>
+</ol>
+<pre><code class="shell">docker pull nginx</code></pre>
+<ol start="3">
+<li>创建容器，设置端口映射、目录映射</li>
+</ol>
+<pre><code class="shell"># 在/root目录下创建nginx目录用于存储nginx数据信息
+mkdir ~/nginx
+cd ~/nginx
+mkdir conf
+cd conf
+# 在~/nginx/conf/下创建nginx.conf文件,粘贴下面内容
+vim nginx.conf</code></pre>
+<pre><code class="shell">
+user  nginx;
+worker_processes  1;
+
+error_log  /var/log/nginx/error.log warn;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+
+</code></pre>
+<pre><code class="shell">docker run -id --name=c_nginx \
+-p 80:80 \
+-v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf \
+-v $PWD/logs:/var/log/nginx \
+-v $PWD/html:/usr/share/nginx/html \
+nginx</code></pre>
+<ul>
+<li>参数说明：<ul>
+<li><strong>-p 80:80</strong>：将容器的 80端口映射到宿主机的 80 端口。</li>
+<li><strong>-v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf</strong>：将主机当前目录下的 /conf/nginx.conf 挂载到容器的 :/etc/nginx/nginx.conf。配置目录</li>
+<li><strong>-v $PWD/logs:/var/log/nginx</strong>：将主机当前目录下的 logs 目录挂载到容器的/var/log/nginx。日志目录</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>使用外部机器访问nginx</li>
+</ol>
+<p><img src=".%5C1573652396669.png" alt="1573652396669"></p>
+<h3 id="四、部署Redis"><a href="#四、部署Redis" class="headerlink" title="四、部署Redis"></a>四、部署Redis</h3><ol>
+<li>搜索redis镜像</li>
+</ol>
+<pre><code class="shell">docker search redis</code></pre>
+<ol start="2">
+<li>拉取redis镜像</li>
+</ol>
+<pre><code class="shell">docker pull redis:5.0</code></pre>
+<ol start="3">
+<li>创建容器，设置端口映射</li>
+</ol>
+<pre><code class="shell">docker run -id --name=c_redis -p 6379:6379 redis:5.0</code></pre>
+<ol start="4">
+<li>使用外部机器连接redis</li>
+</ol>
+<pre><code class="shell">./redis-cli.exe -h 192.168.149.135 -p 6379</code></pre>
