@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">624</span>
+            <span class="post-count">596</span>
         </span>
     </span>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -96,7 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h1><h2 id="1-Feign-概述"><a href="#1-Feign-概述" class="headerlink" title="1-Feign-概述"></a>1-Feign-概述</h2><p>• Feign 是一个声明式的 REST 客户端，它用了基于接口的注解方式，很方便实现客户端配置。<br>• Feign 最初由 Netflix 公司提供，但不支持SpringMVC注解，后由 SpringCloud 对其封装，支持了SpringMVC注<br>解，让使用者更易于接受</p>
-<p>![1587540970425](E:/上课资料/24 SpringCloud/day02/讲义/img/1587540970425.png)</p>
+<p><img src="/2020/01/04/feign/Feign%E4%BD%BF%E7%94%A8/1587540970425.png" alt="1587540970425"></p>
 <h2 id="2-Feign-入门"><a href="#2-Feign-入门" class="headerlink" title="2-Feign-入门"></a>2-Feign-入门</h2><ol>
 <li>在消费端引入 open-feign 依赖</li>
 </ol>
@@ -113,7 +113,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wingone.consumer.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.wingone.consumer.domain.Goods;</span><br><span class="line"><span class="keyword">import</span> com.wingone.consumer.feign.GoodsFeignClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PathVariable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/order&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GoodsFeignClient goodsFeignClient;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/goods/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Goods <span class="title">findGoodsById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        String url = &quot;http://FEIGN-PROVIDER/goods/findOne/&quot;+id;</span></span><br><span class="line"><span class="comment">        // 3. 调用方法</span></span><br><span class="line"><span class="comment">        Goods goods = restTemplate.getForObject(url, Goods.class);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        return goods;*/</span></span><br><span class="line"></span><br><span class="line">        Goods goods = goodsFeignClient.findGoodsById(id);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> goods;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>goodsFeignClient报红，不影响使用</p>
-<p>![1587541824858](E:/上课资料/24 SpringCloud/day02/讲义/img/1587541824858.png)</p>
+<p><img src="/2020/01/04/feign/Feign%E4%BD%BF%E7%94%A8/1587541824858.png" alt="1587541824858"></p>
 <ol start="3">
 <li>在启动类 添加 @EnableFeignClients 注解，开启Feign功能</li>
 </ol>

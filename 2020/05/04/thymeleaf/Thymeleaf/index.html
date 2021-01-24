@@ -166,7 +166,7 @@
 <p>启动系统，并在浏览器访问</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;test&#x2F;hello</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/1560936996326.png" alt="1560936996326"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560936996326.png" alt="1560936996326"></p>
 <h2 id="3-Thymeleaf基本语法"><a href="#3-Thymeleaf基本语法" class="headerlink" title="3 Thymeleaf基本语法"></a>3 Thymeleaf基本语法</h2><p>(1)th:action</p>
 <p>定义后台控制器路径，类似<code>&lt;form&gt;</code>标签的action属性。 </p>
 <p>例如：</p>
@@ -192,7 +192,7 @@
 
 
 <p>测试效果</p>
-<p><img src="images/1560941932553.png" alt="1560941932553"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560941932553.png" alt="1560941932553"></p>
 <p>(3)Map输出</p>
 <p>后台添加Map</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Map定义</span></span><br><span class="line">Map&lt;String,Object&gt; dataMap = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">dataMap.put(<span class="string">&quot;No&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line">dataMap.put(<span class="string">&quot;address&quot;</span>,<span class="string">&quot;深圳&quot;</span>);</span><br><span class="line">model.addAttribute(<span class="string">&quot;dataMap&quot;</span>,dataMap);</span><br></pre></td></tr></table></figure>
@@ -207,7 +207,7 @@
 
 
 <p>测试效果</p>
-<p><img src="images/1560942024009.png" alt="1560942024009"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560942024009.png" alt="1560942024009"></p>
 <p>(4)数组输出</p>
 <p>后台添加数组</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储一个数组</span></span><br><span class="line">String[] names = &#123;<span class="string">&quot;张三&quot;</span>,<span class="string">&quot;李四&quot;</span>,<span class="string">&quot;王五&quot;</span>&#125;;</span><br><span class="line">model.addAttribute(<span class="string">&quot;names&quot;</span>,names);</span><br></pre></td></tr></table></figure>
@@ -218,7 +218,7 @@
 
 
 <p>测试效果</p>
-<p><img src="images/1560942589016.png" alt="1560942589016"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560942589016.png" alt="1560942589016"></p>
 <p>(5)Date输出</p>
 <p>后台添加日期</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//日期</span></span><br><span class="line">model.addAttribute(<span class="string">&quot;now&quot;</span>,<span class="keyword">new</span> Date());</span><br></pre></td></tr></table></figure>
@@ -229,7 +229,7 @@
 
 
 <p>测试效果</p>
-<p><img src="images/1560942631925.png" alt="1560942631925"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560942631925.png" alt="1560942631925"></p>
 <p>(6)th:if条件</p>
 <p>后台添加年龄</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//if条件</span></span><br><span class="line">model.addAttribute(<span class="string">&quot;age&quot;</span>,<span class="number">22</span>);</span><br></pre></td></tr></table></figure>
@@ -242,7 +242,7 @@
 
 
 <p>测试效果</p>
-<p><img src="images/1560942782470.png" alt="1560942782470"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560942782470.png" alt="1560942782470"></p>
 <p>(7)th:fragment 定义一个模块</p>
 <p>可以定义一个独立的模块，创建一个footer.html代码如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html;charset=charset=utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>fragment<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;C&quot;</span> <span class="attr">th:fragment</span>=<span class="string">&quot;copy&quot;</span> &gt;</span></span><br><span class="line">    关于我们<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -256,7 +256,7 @@
 
 
 <p>效果如下：</p>
-<p><img src="images/1560943006665.png" alt="1560943006665"></p>
+<p><img src="/2020/05/04/thymeleaf/Thymeleaf/1560943006665.png" alt="1560943006665"></p>
  
       <!-- reward -->
       
@@ -322,7 +322,7 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/05/07/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E9%89%B4%E6%9D%83/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E9%89%B4%E6%9D%83JWT/" class="article-nav-link">
+      <a href="/2020/05/07/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3%E9%89%B4%E6%9D%83/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BD%91%E5%85%B3/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           

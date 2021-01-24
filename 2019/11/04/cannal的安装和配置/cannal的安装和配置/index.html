@@ -98,7 +98,7 @@
   <h1 id="canal"><a href="#canal" class="headerlink" title="canal"></a>canal</h1><h2 id="1-canal"><a href="#1-canal" class="headerlink" title="1. canal"></a>1. canal</h2><h3 id="1-1-canal简介"><a href="#1-1-canal简介" class="headerlink" title="1.1 canal简介"></a>1.1 canal简介</h3><p>canal可以用来<strong>监控数据库数据的变化</strong>，从而获得新增数据，或者修改的数据。</p>
 <p>canal是应阿里巴巴存在杭州和美国的双机房部署，存在跨机房同步的业务需求而提出的。</p>
 <p>阿里系公司开始逐步的尝试基于<strong>数据库的日志解析</strong>，获取增量变更进行同步，由此衍生出了增量订阅&amp;消费的业务。</p>
-<p><img src="images/1559118194213.png" alt="1559118194213"></p>
+<p><img src="/2019/11/04/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1559118194213.png" alt="1559118194213"></p>
 <p><strong>原理：</strong></p>
 <ol>
 <li>canal模拟mysql slave的交互协议，伪装自己为mysql slave，向mysql master发送dump协议</li>
@@ -123,14 +123,14 @@
 <h4 id="1-2-2-canal服务端安装配置"><a href="#1-2-2-canal服务端安装配置" class="headerlink" title="1.2.2 canal服务端安装配置"></a>1.2.2 canal服务端安装配置</h4><p>（1）下载地址canal</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;alibaba&#x2F;canal&#x2F;releases&#x2F;tag&#x2F;canal-1.0.24</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/1559118907783.png" alt="1559118907783"></p>
+<p><img src="/2019/11/04/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1559118907783.png" alt="1559118907783"></p>
 <p>（2）下载之后 上传到linux系统中，解压缩到指定的目录/usr/local/canal</p>
 <p>解压缩之后的目录结构如下：</p>
-<p><img src="images/1559119163725.png" alt="1559119163725"></p>
+<p><img src="/2019/11/04/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1559119163725.png" alt="1559119163725"></p>
 <p>（3）修改 exmaple下的实例配置</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi conf/example/instance.properties</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/6-7.png"></p>
+<p><img src="/2019/11/04/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/6-7.png"></p>
 <p>修改如图所示的几个参数。</p>
 <p>（3）指定读取位置  </p>
 <p>进入mysql中执行下面语句查看binlog所在位置</p>
@@ -154,7 +154,7 @@
 <p>（5）查看日志：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;usr&#x2F;local&#x2F;canal&#x2F;logs&#x2F;canal&#x2F;canal.log</span><br></pre></td></tr></table></figure>
 
-<p><img src="images/1559119507451.png" alt="1559119507451"></p>
+<p><img src="/2019/11/04/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/cannal%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1559119507451.png" alt="1559119507451"></p>
 <p>这样就表示启动成功了。</p>
  
       <!-- reward -->
@@ -231,7 +231,7 @@
       </a>
     
     
-      <a href="/2019/11/04/fastDFS/%E7%AC%AC2%E7%AB%A0.%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8/" class="article-nav-link">
+      <a href="/2019/11/04/fastDFS/fastDFS/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">FastDFS</div>
       </a>
