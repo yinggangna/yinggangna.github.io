@@ -152,8 +152,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -id --name=c_tomcat \</span><br><span class="line">-p 8080:8080 \</span><br><span class="line">-v $PWD:/usr/local/tomcat/webapps \</span><br><span class="line">tomcat </span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>参数说明：</p>
-<ul>
+<li>参数说明：<ul>
 <li><p><strong>-p 8080:8080：</strong>将容器的8080端口<strong>映射</strong>到主机的8080端口</p>
 <p><strong>-v $PWD:/usr/local/tomcat/webapps：</strong>将主机中当前目录<strong>挂载</strong>到容器的webapps</p>
 </li>

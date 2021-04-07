@@ -112,8 +112,6 @@
 <h2 id="controller层"><a href="#controller层" class="headerlink" title="controller层"></a>controller层</h2><p>具体使用举例说明：<br>@Api()<br>用于<strong>类</strong>；表示标识这个类是swagger的资源<br>tags–表示说明<br>value–也是说明，可以使用tags替代<br>但是tags如果有多个值，会生成多个list</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Api(value&#x3D;&quot;用户controller&quot;,tags&#x3D;&#123;&quot;用户操作接口&quot;&#125;)</span><br><span class="line">@RestController</span><br><span class="line">public class UserController &#123; &#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <p>@ApiOperation() 用于<strong>方法</strong>；表示一个http请求的操作<br>value用于方法描述<br>notes用于提示内容<br>tags可以重新分组（视情况而用）<br>@ApiParam() 用于方法，参数，字段说明；表示对参数的添加元数据（说明或是否必填等）<br>name–参数名<br>value–参数说明<br>required–是否必填</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Api(value=&quot;用户controller&quot;,tags=&#123;&quot;用户操作接口&quot;&#125;)</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">       </span><br><span class="line">       <span class="meta">@ApiOperation(value = &quot;获取用户信息&quot;, tags = &#123;&quot;获取用户信息copy&quot;&#125;, notes = &quot;注意问题点&quot;)</span></span><br><span class="line">       <span class="meta">@GetMapping(&quot;/getUserInfo&quot;)</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> User <span class="title">getUserInfo</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">       				<span class="meta">@ApiParam(name = &quot;id&quot;, value = &quot;用户id&quot;, required = true)</span> Long id, 										<span class="meta">@ApiParam(name = &quot;username&quot;, value = &quot;用户名&quot;)</span> String username)</span> </span>&#123; <span class="comment">// userService可忽略，是业务逻辑 User user = userService.getUserInfo(); return user; &#125; &#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -123,15 +121,7 @@
 <p>@ApiModelProperty()用于<strong>方法</strong>，<strong>字段</strong>； 表示对model属性的说明或者数据操作更改<br>value–字段说明<br>name–重写属性名字<br>dataType–重写属性类型<br>required–是否必填<br>example–举例说明<br>hidden–隐藏</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiModel(value=&quot;user对象&quot;,description=&quot;用户对象user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ApiModelProperty(value=&quot;用户名&quot;,name=&quot;username&quot;,example=&quot;xingguo&quot;)</span> </span><br><span class="line">    <span class="keyword">private</span> String username; </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ApiModelProperty(value=&quot;状态&quot;,name=&quot;state&quot;,required=true)</span> </span><br><span class="line">    <span class="keyword">private</span> Integer state; </span><br><span class="line">    <span class="keyword">private</span> String password; </span><br><span class="line">    <span class="keyword">private</span> String nickName; </span><br><span class="line">    <span class="keyword">private</span> Integer isDeleted;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@ApiModelProperty(value=&quot;id数组&quot;,hidden=true)</span> </span><br><span class="line">    <span class="keyword">private</span> String[] ids; </span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; idList; <span class="comment">//省略get/set &#125;</span></span><br></pre></td></tr></table></figure>
 
-
-
-
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation(&quot;更改用户信息&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/updateUserInfo&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">updateUserInfo</span><span class="params">(<span class="meta">@RequestBody</span> </span></span></span><br><span class="line"><span class="function"><span class="params">    		<span class="meta">@ApiParam(name=&quot;用户对象&quot;,value=&quot;传入json格式&quot;,required=true)</span> User user)</span></span>&#123; </span><br><span class="line">    <span class="keyword">int</span> num = userService.updateUserInfo(user); </span><br><span class="line">    <span class="keyword">return</span> num; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>@ApiIgnore()用于类或者方法上，可以不被swagger显示在页面上<br>比较简单, 这里不做举例</p>
 <p>@ApiImplicitParam() 用于方法<br>表示单独的请求参数<br>@ApiImplicitParams() 用于方法，包含多个 @ApiImplicitParam<br>name–参数ming<br>value–参数说明<br>dataType–数据类型<br>paramType–参数类型<br>example–举例说明</p>
@@ -203,9 +193,9 @@
   <nav class="article-nav">
     
     
-      <a href="/2021/01/24/java%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="article-nav-link">
+      <a href="/2021/04/07/%E7%8B%82%E7%A5%9E%E8%AF%B4/kuang/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">java开发常用工具</div>
+        <div class="article-nav-title">狂神说笔记</div>
       </a>
     
   </nav>
