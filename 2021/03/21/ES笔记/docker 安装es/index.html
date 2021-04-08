@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    elasticsearch-Docker |  WinGone&#39;s Blog
+    docker 安装es |  WinGone&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -48,8 +48,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="elasticsearch-Docker-docker 安装es"
-  class="article article-type-elasticsearch-Docker"
+  id="docker 安装es-ES笔记/docker 安装es"
+  class="article article-type-docker 安装es"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -59,22 +59,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  elasticsearch-Docker
+  docker 安装es
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/01/21/docker%20%E5%AE%89%E8%A3%85es/" class="article-date">
-  <time datetime="2021-01-21T07:43:13.000Z" itemprop="datePublished">2021-01-21</time>
+      <a href="/2021/03/21/ES%E7%AC%94%E8%AE%B0/docker%20%E5%AE%89%E8%A3%85es/" class="article-date">
+  <time datetime="2021-03-21T07:43:13.000Z" itemprop="datePublished">2021-03-21</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">43</span>
+            <span class="post-count">100</span>
         </span>
     </span>
 
@@ -102,6 +102,19 @@
 <p> sudo sysctl -w vm.max_map_count=262144</p>
 <p>docker run -e ES_JAVA_OPTS=”-Xms512m -Xmx512m” -d -p 9200:9200 -p 9300:9300 –name ES02 6d65982e47c9</p>
 <p>sysctl -a | grep vm.max_map_count vm.max_map_count = 65536</p>
+<p>#下载镜像</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull docker.elastic.co/elasticsearch/elasticsearch:<span class="number">7.8</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>#创建容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:7.8.0</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>#官网地址<br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html</a></p>
  
       <!-- reward -->
       
@@ -154,7 +167,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/01/21/docker%20%E5%AE%89%E8%A3%85es/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/03/21/ES%E7%AC%94%E8%AE%B0/docker%20%E5%AE%89%E8%A3%85es/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -167,19 +180,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/01/23/idea%E6%8F%92%E4%BB%B6/%E6%8F%90%E9%AB%98%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E6%8F%92%E4%BB%B6-IDEA/" class="article-nav-link">
+      <a href="/2021/04/07/%E7%8B%82%E7%A5%9E%E8%AF%B4/kuang/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            idea插件
+            狂神说笔记
           
         </div>
       </a>
     
     
-      <a href="/2021/01/21/github/github%E8%AE%BF%E9%97%AE/" class="article-nav-link">
+      <a href="/2021/01/24/java%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">GitHub 无法访问问题解决</div>
+        <div class="article-nav-title">java开发常用工具</div>
       </a>
     
   </nav>
