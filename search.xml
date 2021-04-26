@@ -5244,17 +5244,17 @@
     <title>elasticsearch安装及使用</title>
     <url>/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/</url>
     <content><![CDATA[<h1 id="1-查看springboot-与elasticsearch对应版本"><a href="#1-查看springboot-与elasticsearch对应版本" class="headerlink" title="1.查看springboot 与elasticsearch对应版本"></a>1.查看springboot 与elasticsearch对应版本</h1><p>springboot的版本</p>
-<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210426141700441.png" alt="image-20210426141700441"></p>
-<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210426141717107.png" alt="image-20210426141717107"></p>
+<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/image-20210426141700441.png" alt="image-20210426141700441"></p>
+<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/image-20210426141717107.png" alt="image-20210426141717107"></p>
 <p>点进去发现</p>
-<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210426141737388.png" alt="image-20210426141737388"></p>
+<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/image-20210426141737388.png" alt="image-20210426141737388"></p>
 <p>可以看到</p>
 <ul>
 <li>这个版本是 <strong>3.2.3</strong></li>
 </ul>
 <p>查看得知 es版本</p>
 <p><a href="https://docs.spring.io/spring-data/elasticsearch/docs/3.2.4.RELEASE/reference/html/#reference">https://docs.spring.io/spring-data/elasticsearch/docs/3.2.4.RELEASE/reference/html/#reference</a></p>
-<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210426141805245.png" alt="image-20210426141805245"></p>
+<p><img src="/2021/04/25/ES%E7%AC%94%E8%AE%B0/elasticsearch/image-20210426141805245.png" alt="image-20210426141805245"></p>
 <ul>
 <li>所以es版本选择 <strong>6.8.4 及其 以上</strong>的</li>
 </ul>
