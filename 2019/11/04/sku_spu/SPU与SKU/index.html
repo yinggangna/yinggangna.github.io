@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    SPU与SKU |  WinGone&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="WinGone's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="SPU与SKU-sku_spu/SPU与SKU"
+  class="article article-type-SPU与SKU"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  SPU与SKU
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/11/04/sku_spu/SPU%E4%B8%8ESKU/" class="article-date">
+  <time datetime="2019-11-04T04:49:38.000Z" itemprop="datePublished">2019-11-04</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="1概念与表结构分析"><a href="#1概念与表结构分析" class="headerlink" title="1概念与表结构分析"></a>1概念与表结构分析</h3><h4 id="1-1-SPU与SKU概念"><a href="#1-1-SPU与SKU概念" class="headerlink" title="1.1 SPU与SKU概念"></a>1.1 SPU与SKU概念</h4><p><strong>SPU = Standard Product Unit  （标准产品单位）</strong></p>
+<ul>
+<li><p>概念 : SPU 是商品信息聚合的最小单位，是一组可复用、易检索的标准化信息的集合，该集合描述了一个产品的特性。</p>
+</li>
+<li><p>通俗点讲，属性值、特性相同的货品就可以称为一个 SPU</p>
+<p>例如：<strong>华为P30 就是一个 SPU</strong></p>
+</li>
+</ul>
+<p><strong>SKU=stock keeping unit( 库存量单位)</strong></p>
+<ul>
+<li><p>SKU 即库存进出计量的单位， 可以是以件、盒、托盘等为单位。</p>
+</li>
+<li><p>SKU 是物理上不可分割的最小存货单元。在使用时要根据不同业态，不同管理模式来处理。</p>
+</li>
+<li><p>在服装、鞋类商品中使用最多最普遍。</p>
+<p>例如：<strong>华为P30 红色 64G 就是一个 SKU</strong></p>
+</li>
+</ul>
+<h4 id="1-2-表结构分析"><a href="#1-2-表结构分析" class="headerlink" title="1.2 表结构分析"></a>1.2 表结构分析</h4><p>tb_spu  表 （SPU表）</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段含义</th>
+<th>字段类型</th>
+<th>字段长度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sn</td>
+<td>货号</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>SPU名</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>caption</td>
+<td>副标题</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>brand_id</td>
+<td>品牌ID</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>category1_id</td>
+<td>一级分类</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>category2_id</td>
+<td>二级分类</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>category3_id</td>
+<td>三级分类</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>template_id</td>
+<td>模板ID</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>freight_id</td>
+<td>运费模板id</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>image</td>
+<td>图片</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>images</td>
+<td>图片列表</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sale_service</td>
+<td>售后服务</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>introduction</td>
+<td>介绍</td>
+<td>TEXT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>spec_items</td>
+<td>规格列表</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>para_items</td>
+<td>参数列表</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sale_num</td>
+<td>销量</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>comment_num</td>
+<td>评论数</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>is_marketable</td>
+<td>是否上架</td>
+<td>CHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>is_enable_spec</td>
+<td>是否启用规格</td>
+<td>CHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>is_delete</td>
+<td>是否删除</td>
+<td>CHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td>审核状态</td>
+<td>CHAR</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>tb_sku  表（SKU商品表）</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>字段含义</th>
+<th>字段类型</th>
+<th>字段长度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>商品id</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sn</td>
+<td>商品条码</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>SKU名称</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>价格（分）</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>num</td>
+<td>库存数量</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>alert_num</td>
+<td>库存预警数量</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>image</td>
+<td>商品图片</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>images</td>
+<td>商品图片列表</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>weight</td>
+<td>重量（克）</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>create_time</td>
+<td>创建时间</td>
+<td>DATETIME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>update_time</td>
+<td>更新时间</td>
+<td>DATETIME</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>spu_id</td>
+<td>SPUID</td>
+<td>BIGINT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>类目ID</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>category_name</td>
+<td>类目名称</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>brand_name</td>
+<td>品牌名称</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>spec</td>
+<td>规格</td>
+<td>VARCHAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>sale_num</td>
+<td>销量</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>comment_num</td>
+<td>评论数</td>
+<td>INT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td>商品状态 1-正常，2-下架，3-删除</td>
+<td>CHAR</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-2-实现思路"><a href="#2-2-实现思路" class="headerlink" title="2.2 实现思路"></a>2.2 实现思路</h3><p>前端传递给后端的数据格式 是一个spu对象和sku列表组成的对象。   Goods</p>
+<p>private Spu sup;</p>
+<p>private List<sku> list;</sku></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;spu&quot;</span>: &#123;</span><br><span class="line">      	<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;这个是商品名称&quot;</span>,</span><br><span class="line">      	<span class="attr">&quot;caption&quot;</span>: <span class="string">&quot;这个是副标题&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;brandId&quot;</span>: <span class="number">1115</span>,</span><br><span class="line">		<span class="attr">&quot;category1Id&quot;</span>: <span class="number">558</span>,</span><br><span class="line">		<span class="attr">&quot;category2Id&quot;</span>: <span class="number">559</span>,</span><br><span class="line">		<span class="attr">&quot;category3Id&quot;</span>: <span class="number">560</span>,</span><br><span class="line">		<span class="attr">&quot;freightId&quot;</span>: <span class="number">10</span>,</span><br><span class="line">		<span class="attr">&quot;image&quot;</span>: <span class="string">&quot;http://www.yigou.com/image/1.jpg&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;images&quot;</span>: <span class="string">&quot;http://www.yigou.com/image/1.jpg,http://www.yigou.com/image/2.jpg&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;introduction&quot;</span>: <span class="string">&quot;这个是商品详情，html代码&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;paraItems&quot;</span>: <span class="string">&quot;&#123;&#x27;出厂年份&#x27;:&#x27;2019&#x27;,&#x27;赠品&#x27;:&#x27;充电器&#x27;&#125;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;saleService&quot;</span>: <span class="string">&quot;七天包退,闪电退货&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;sn&quot;</span>: <span class="string">&quot;020102331&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;specItems&quot;</span>:  <span class="string">&quot;&#123;&#x27;颜色&#x27;:[&#x27;红&#x27;,&#x27;绿&#x27;],&#x27;机身内存&#x27;:[&#x27;64G&#x27;,&#x27;8G&#x27;]&#125;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;templateId&quot;</span>: <span class="number">42</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;skuList&quot;</span>: [&#123;</span><br><span class="line">		<span class="attr">&quot;sn&quot;</span>: <span class="string">&quot;10192010292&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;num&quot;</span>: <span class="number">100</span>,</span><br><span class="line">      	 <span class="attr">&quot;alertNum&quot;</span>: <span class="number">20</span>,</span><br><span class="line">		 <span class="attr">&quot;price&quot;</span>: <span class="number">900000</span>,</span><br><span class="line">         <span class="attr">&quot;spec&quot;</span>: <span class="string">&quot;&#123;&#x27;颜色&#x27;:&#x27;红&#x27;,&#x27;机身内存&#x27;:&#x27;64G&#x27;&#125;&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;image&quot;</span>: <span class="string">&quot;http://www.yigou.com/image/1.jpg&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;images&quot;</span>: <span class="string">&quot;http://www.yigou.com/image/1.jpg,http://www.yigou.com/image/2.jpg&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;status&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;weight&quot;</span>: <span class="number">130</span></span><br><span class="line">	&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">		<span class="attr">&quot;sn&quot;</span>: <span class="string">&quot;10192010293&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;num&quot;</span>: <span class="number">100</span>,</span><br><span class="line">      	 <span class="attr">&quot;alertNum&quot;</span>: <span class="number">20</span>,</span><br><span class="line">		 <span class="attr">&quot;price&quot;</span>: <span class="number">600000</span>,</span><br><span class="line">         <span class="attr">&quot;spec&quot;</span>: <span class="string">&quot;&#123;&#x27;颜色&#x27;:&#x27;蓝&#x27;,&#x27;机身内存&#x27;:&#x27;128G&#x27;&#125;&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;image&quot;</span>: <span class="string">&quot;http://www.yigou.com/image/1.jpg&quot;</span>,</span><br><span class="line">         <span class="attr">&quot;images&quot;</span>: <span class="string">&quot;http://www.yigou.com/image/1.jpg,http://www.yigou.com/image/2.jpg&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;status&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;weight&quot;</span>: <span class="number">130</span></span><br><span class="line">	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里我们需要定义一个Goods实体对前端传过来的参数进行封装：</p>
+<p><img src="/2019/11/04/sku_spu/SPU%E4%B8%8ESKU/Users\gao\AppData\Roaming\Typora\typora-user-images\1574418879507.png" alt="1574418879507"></p>
+<h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3 代码实现"></a>3 代码实现</h3><h4 id="3-1-SPU与SKU列表的保存"><a href="#3-1-SPU与SKU列表的保存" class="headerlink" title="3.1 SPU与SKU列表的保存"></a>3.1 SPU与SKU列表的保存</h4><p>代码实现：</p>
+<p>（1）yigou_service_goods_api工程创建组合实体类Goods</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 商品组合实体类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Goods</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Spu spu;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Sku&gt; skuList;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Spu <span class="title">getSpu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> spu;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSpu</span><span class="params">(Spu spu)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.spu = spu;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Sku&gt; <span class="title">getSkuList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> skuList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSkuList</span><span class="params">(List&lt;Sku&gt; skuList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.skuList = skuList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）yigou_service_goods工程SpuService新增方法add(Goods goods)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 新增</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> goods</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(Goods goods)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>（3）yigou_service_goods工程SpuServiceImpl实现此方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> CategoryMapper categoryMapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> SkuMapper skuMapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> BrandMapper brandMapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> IdWorker idWorker;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存商品 SPU+SKU列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> goods 商品组合实体类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Goods goods)</span> </span>&#123;</span><br><span class="line">    Spu spu = goods.getSpu();</span><br><span class="line">    <span class="keyword">long</span> spuId = idWorker.nextId();</span><br><span class="line">    spu.setId(String.valueOf(spuId));</span><br><span class="line">    spu.setIsDelete(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">    spu.setIsMarketable(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">    spu.setStatus(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">    spuMapper.insertSelective(spu);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//保存sku集合数据到数据库</span></span><br><span class="line">    saveSkuList(goods);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存sku列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> goods</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveSkuList</span><span class="params">(Goods goods)</span></span>&#123;</span><br><span class="line">    <span class="comment">//获取spu对象</span></span><br><span class="line">    Spu spu = goods.getSpu();</span><br><span class="line">    <span class="comment">//当前日期</span></span><br><span class="line">    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">    <span class="comment">//获取品牌对象</span></span><br><span class="line">    Brand brand = brandMapper.selectByPrimaryKey(spu.getBrandId());</span><br><span class="line">    <span class="comment">//获取分类对象</span></span><br><span class="line">    Category category = categoryMapper.selectByPrimaryKey(spu.getCategory3Id());</span><br><span class="line">    <span class="comment">//获取sku集合对象</span></span><br><span class="line">    List&lt;Sku&gt; skuList = goods.getSkuList();</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (skuList != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Sku sku : skuList) &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//设置sku主键ID 分布式id</span></span><br><span class="line">            sku.setId(String.valueOf(idWorker.nextId()));</span><br><span class="line">             </span><br><span class="line">            <span class="comment">//设置sku规格 如果前端没有传数据 设置为null  &#123;&#125;</span></span><br><span class="line">            <span class="keyword">if</span> (sku.getSpec() == <span class="keyword">null</span> || <span class="string">&quot;&quot;</span>.equals(sku.getSpec())) &#123;</span><br><span class="line">                sku.setSpec(<span class="string">&quot;&#123;&#125;&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//设置sku名称</span></span><br><span class="line">            <span class="comment">//(spau商品名称 + 规格)</span></span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            String name = spu.getName();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//将规格json字符串转换成Map</span></span><br><span class="line">            Map&lt;String, String&gt; specMap = JSON.parseObject(sku.getSpec(), Map.class);</span><br><span class="line">            <span class="comment">//获取Map中的所有value</span></span><br><span class="line">            <span class="keyword">if</span> (specMap != <span class="keyword">null</span> &amp;&amp; specMap.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span>(String value : specMap.values())&#123;</span><br><span class="line">                    name += <span class="string">&quot; &quot;</span>+ value;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            sku.setName(name);<span class="comment">//名称</span></span><br><span class="line">            sku.setSpuId(spu.getId());<span class="comment">//设置spu的ID</span></span><br><span class="line">            sku.setCreateTime(date);<span class="comment">//创建日期</span></span><br><span class="line">            sku.setUpdateTime(date);<span class="comment">//修改日期</span></span><br><span class="line">            sku.setCategoryId(category.getId());<span class="comment">//商品分类ID</span></span><br><span class="line">            sku.setCategoryName(category.getName());<span class="comment">//商品分类名称</span></span><br><span class="line">            sku.setBrandName(brand.getName());<span class="comment">//品牌名称</span></span><br><span class="line">            skuMapper.insertSelective(sku);<span class="comment">//插入sku表数据</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>（3）修改SpuController的add方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 新增数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> goods</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> Goods goods)</span></span>&#123;</span><br><span class="line">    spuService.add(goods);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Result(<span class="keyword">true</span>,StatusCode.OK,<span class="string">&quot;添加成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9001</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">jackson:</span></span><br><span class="line">    <span class="attr">time-zone:</span> <span class="string">GMT+8</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">goods</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://192.168.200.128:3306/yigou_goods?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=GMT%2b8</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">  <span class="attr">main:</span></span><br><span class="line">    <span class="attr">allow-bean-definition-overriding:</span> <span class="literal">true</span> <span class="comment">#当遇到同样名字的时候，是否允许覆盖注册</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://127.0.0.1:6868/eureka</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">prefer-ip-address:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="attr">default:</span>   <span class="comment">#配置全局的feign的调用超时时间  如果 有指定的服务配置 默认的配置不会生效</span></span><br><span class="line">        <span class="attr">connectTimeout:</span> <span class="number">60000</span> <span class="comment"># 指定的是 消费者 连接服务提供者的连接超时时间 是否能连接  单位是毫秒</span></span><br><span class="line">        <span class="attr">readTimeout:</span> <span class="number">20000</span>  <span class="comment"># 指定的是调用服务提供者的 服务 的超时时间（）  单位是毫秒</span></span><br><span class="line"><span class="comment">#hystrix 配置</span></span><br><span class="line"><span class="attr">hystrix:</span></span><br><span class="line">  <span class="attr">command:</span></span><br><span class="line">    <span class="attr">default:</span></span><br><span class="line">      <span class="attr">execution:</span></span><br><span class="line">        <span class="attr">timeout:</span></span><br><span class="line">          <span class="comment">#如果enabled设置为false，则请求超时交给ribbon控制</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">isolation:</span></span><br><span class="line">          <span class="attr">strategy:</span> <span class="string">SEMAPHORE</span></span><br><span class="line">          <span class="attr">thread:</span></span><br><span class="line">            <span class="comment"># 熔断器超时时间，默认：1000/毫秒</span></span><br><span class="line">            <span class="attr">timeoutInMilliseconds:</span> <span class="number">20000</span></span><br><span class="line"><span class="attr">workerId:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">datacenterId:</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4 id="3-2-品牌与分类关联"><a href="#3-2-品牌与分类关联" class="headerlink" title="3.2 品牌与分类关联"></a>3.2 品牌与分类关联</h4><p>实现思路：</p>
+<p>将分类ID与SPU的品牌ID 一起插入到tb_category_brand表中</p>
+<p>（1）创建实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table(name=&quot;tb_category_brand&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CategoryBrand</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Integer categoryId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="keyword">private</span> Integer brandId;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getCategoryId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> categoryId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCategoryId</span><span class="params">(Integer categoryId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.categoryId = categoryId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getBrandId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> brandId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBrandId</span><span class="params">(Integer brandId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.brandId = brandId;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个表是联合主键，所以templateId和brandId都有@Id注解</p>
+<p>（2）新建数据访问接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CategoryBrandMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">CategoryBrand</span>&gt; </span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）SpuServiceImpl引入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> CategoryBrandMapper categoryBrandMapper;</span><br></pre></td></tr></table></figure>
+
+<p>（4）修改SpuServiceImpl的saveSkuList方法，添加分类与品牌之间的关联, </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">        * 添加分类与品牌之间的关联</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       CategoryBrand categoryBrand = <span class="keyword">new</span> CategoryBrand();</span><br><span class="line">       categoryBrand.setBrandId(spu.getBrandId());</span><br><span class="line">       categoryBrand.setCategoryId(spu.getCategory3Id());</span><br><span class="line">       <span class="keyword">int</span> count = categoryBrandMapper.selectCount(categoryBrand);</span><br><span class="line">       <span class="comment">//判断是否有这个品牌和分类的关系数据</span></span><br><span class="line">       <span class="keyword">if</span>(count == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="comment">//如果没有关系数据则添加品牌和分类关系数据</span></span><br><span class="line">           categoryBrandMapper.insert(categoryBrand);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改后代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveSkuList</span><span class="params">(Goods goods)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//获取spu对象</span></span><br><span class="line">        Spu spu = goods.getSpu();</span><br><span class="line">        <span class="comment">//当前日期</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="comment">//获取品牌对象</span></span><br><span class="line">        Brand brand = brandMapper.selectByPrimaryKey(spu.getBrandId());</span><br><span class="line">        <span class="comment">//获取分类对象</span></span><br><span class="line">        Category category = categoryMapper.selectByPrimaryKey(spu.getCategory3Id());</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 添加分类与品牌之间的关联</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        CategoryBrand categoryBrand = <span class="keyword">new</span> CategoryBrand();</span><br><span class="line">        categoryBrand.setBrandId(spu.getBrandId());</span><br><span class="line">        categoryBrand.setCategoryId(spu.getCategory3Id());</span><br><span class="line">        <span class="keyword">int</span> count = categoryBrandMapper.selectCount(categoryBrand);</span><br><span class="line">        <span class="comment">//判断是否有这个品牌和分类的关系数据</span></span><br><span class="line">        <span class="keyword">if</span>(count == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//如果没有关系数据则添加品牌和分类关系数据</span></span><br><span class="line">            categoryBrandMapper.insert(categoryBrand);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取sku集合对象</span></span><br><span class="line">        List&lt;Sku&gt; skuList = goods.getSkuList();</span><br><span class="line">        <span class="keyword">if</span> (skuList != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Sku sku : skuList) &#123;</span><br><span class="line">                <span class="comment">//设置sku主键ID</span></span><br><span class="line">                sku.setId(String.valueOf(idWorker.nextId()));</span><br><span class="line">                <span class="comment">//设置sku规格</span></span><br><span class="line">                <span class="keyword">if</span> (sku.getSpec() == <span class="keyword">null</span> || <span class="string">&quot;&quot;</span>.equals(sku.getSpec())) &#123;</span><br><span class="line">                    sku.setSpec(<span class="string">&quot;&#123;&#125;&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//设置sku名称(商品名称 + 规格)</span></span><br><span class="line">                String name = spu.getName();</span><br><span class="line">                <span class="comment">//将规格json字符串转换成Map</span></span><br><span class="line">                Map&lt;String, String&gt; specMap = JSON.parseObject(sku.getSpec(), Map.class);</span><br><span class="line">                <span class="keyword">if</span> (specMap != <span class="keyword">null</span> &amp;&amp; specMap.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span>(String value : specMap.values())&#123;</span><br><span class="line">                        name += <span class="string">&quot; &quot;</span>+ value;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                sku.setName(name);<span class="comment">//名称</span></span><br><span class="line">                sku.setSpuId(spu.getId());<span class="comment">//设置spu的ID</span></span><br><span class="line">                sku.setCreateTime(date);<span class="comment">//创建日期</span></span><br><span class="line">                sku.setUpdateTime(date);<span class="comment">//修改日期</span></span><br><span class="line">                sku.setCategoryId(category.getId());<span class="comment">//商品分类ID</span></span><br><span class="line">                sku.setCategoryName(category.getName());<span class="comment">//商品分类名称</span></span><br><span class="line">                sku.setBrandName(brand.getName());<span class="comment">//品牌名称</span></span><br><span class="line">                skuMapper.insertSelective(sku);<span class="comment">//插入sku表数据</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-根据ID查询商品"><a href="#3-3-根据ID查询商品" class="headerlink" title="3.3 根据ID查询商品"></a>3.3 根据ID查询商品</h4><p>需求：根据id 查询SPU和SKU列表 ，显示效果如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;spu&quot;</span>: &#123;</span><br><span class="line">		<span class="attr">&quot;brandId&quot;</span>: <span class="number">8557</span>,</span><br><span class="line">		<span class="attr">&quot;caption&quot;</span>: <span class="string">&quot;111&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;category1Id&quot;</span>: <span class="number">558</span>,</span><br><span class="line">		<span class="attr">&quot;category2Id&quot;</span>: <span class="number">559</span>,</span><br><span class="line">		<span class="attr">&quot;category3Id&quot;</span>: <span class="number">560</span>,</span><br><span class="line">		<span class="attr">&quot;commentNum&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;freightId&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;id&quot;</span>: <span class="number">149187842867993</span>,</span><br><span class="line">		<span class="attr">&quot;image&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;images&quot;</span>: <span class="string">&quot;[&#123;\&quot;color\&quot;:\&quot;银白色\&quot;,\&quot;url\&quot;:\&quot;//img11.360buyimg.com/n7/jfs/t30040/100/1290632710/208879/1f7e2225/5cdd0d92Nb78895a6.jpg\&quot;&#125;]&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;introduction&quot;</span>: <span class="string">&quot;这是测试手机数据&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;isDelete&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;isEnableSpec&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;isMarketable&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;黑马智能手机&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;paraItems&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;saleNum&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;saleService&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;sn&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;specItems&quot;</span>: <span class="string">&quot;&#123;\&quot;颜色\&quot;:[\&quot;金色\&quot;,\&quot;黑色\&quot;,\&quot;蓝色\&quot;],\&quot;版本\&quot;:[\&quot;6GB+64GB\&quot;]&#125;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;status&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;templateId&quot;</span>: <span class="number">42</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">&quot;skuList&quot;</span>: [&#123;</span><br><span class="line">		<span class="attr">&quot;alertNum&quot;</span>: <span class="number">100</span>,</span><br><span class="line">		<span class="attr">&quot;commentNum&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;image&quot;</span>: <span class="string">&quot;https://m.360buyimg.com/mobilecms/s720x720_jfs/t22642/312/2563982615/103706/1398b13d/5b865bb3N0409f0d0.jpg!q70.jpg.webp&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;images&quot;</span>: <span class="string">&quot;https://m.360buyimg.com/mobilecms/s720x720_jfs/t22642/312/2563982615/103706/1398b13d/5b865bb3N0409f0d0.jpg!q70.jpg.webp&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;num&quot;</span>: <span class="number">100</span>,</span><br><span class="line">		<span class="attr">&quot;price&quot;</span>: <span class="number">90000</span>,</span><br><span class="line">		<span class="attr">&quot;saleNum&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;sn&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;spec&quot;</span>: <span class="string">&quot;&#123;&#x27;颜色&#x27;: &#x27;蓝色&#x27;&#125;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;status&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;weight&quot;</span>: <span class="number">10</span></span><br><span class="line">	&#125;,&#123;</span><br><span class="line">		<span class="attr">&quot;alertNum&quot;</span>: <span class="number">100</span>,</span><br><span class="line">		<span class="attr">&quot;commentNum&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;image&quot;</span>: <span class="string">&quot;https://m.360buyimg.com/mobilecms/s720x720_jfs/t22642/312/2563982615/103706/1398b13d/5b865bb3N0409f0d0.jpg!q70.jpg.webp&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;images&quot;</span>: <span class="string">&quot;https://m.360buyimg.com/mobilecms/s720x720_jfs/t22642/312/2563982615/103706/1398b13d/5b865bb3N0409f0d0.jpg!q70.jpg.webp&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;num&quot;</span>: <span class="number">100</span>,</span><br><span class="line">		<span class="attr">&quot;price&quot;</span>: <span class="number">80000</span>,</span><br><span class="line">		<span class="attr">&quot;saleNum&quot;</span>: <span class="number">0</span>,</span><br><span class="line">		<span class="attr">&quot;sn&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;spec&quot;</span>: <span class="string">&quot;&#123;&#x27;颜色&#x27;: &#x27;黑色&#x27;&#125;&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;status&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">		<span class="attr">&quot;weight&quot;</span>: <span class="number">10</span></span><br><span class="line">	  &#125;</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码实现：</p>
+<p>（1）yigou_service_goods工程SpuService新增方法定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据ID查询商品</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Goods <span class="title">findGoodsById</span><span class="params">(String id)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>（2）yigou_service_goods工程SpuServiceImpl实现此方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据ID查询商品</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Goods <span class="title">findGoodsById</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">    <span class="comment">//查询spu</span></span><br><span class="line">    Spu spu = spuMapper.selectByPrimaryKey(id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询SKU 列表</span></span><br><span class="line">    Example example=<span class="keyword">new</span> Example(Sku.class);</span><br><span class="line">    Example.Criteria criteria = example.createCriteria();</span><br><span class="line">    criteria.andEqualTo(<span class="string">&quot;spuId&quot;</span>,id);</span><br><span class="line">    List&lt;Sku&gt; skuList = skuMapper.selectByExample(example);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//封装，返回</span></span><br><span class="line">    Goods goods=<span class="keyword">new</span> Goods();</span><br><span class="line">    goods.setSpu(spu);</span><br><span class="line">    goods.setSkuList(skuList);</span><br><span class="line">    <span class="keyword">return</span> goods;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）修改SpuController的findById方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">findById</span><span class="params">(<span class="meta">@PathVariable</span> String id)</span></span>&#123;</span><br><span class="line">    Goods goods = spuService.findGoodsById(id);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Result(<span class="keyword">true</span>,StatusCode.OK,<span class="string">&quot;查询成功&quot;</span>,goods);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-4-修改"><a href="#3-4-修改" class="headerlink" title="3.4 修改"></a>3.4 修改</h4><p>（1）yigou_service_goods工程SpuService新增方法定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 修改数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> spu</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(Goods goods)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>（2）yigou_service_goods工程SpuServiceImpl实现此方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Goods goods )</span> </span>&#123;</span><br><span class="line">    <span class="comment">//取出spu部分</span></span><br><span class="line">    Spu spu = goods.getSpu();</span><br><span class="line">    spuMapper.updateByPrimaryKey(spu);</span><br><span class="line">    <span class="comment">//删除原sku列表</span></span><br><span class="line">    Example example=<span class="keyword">new</span> Example(Sku.class);</span><br><span class="line">    Example.Criteria criteria = example.createCriteria();</span><br><span class="line">    criteria.andEqualTo(<span class="string">&quot;spuId&quot;</span>,spu.getId());</span><br><span class="line">    skuMapper.deleteByExample(example);</span><br><span class="line"></span><br><span class="line">    saveSkuList(goods);<span class="comment">//保存sku列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）修改SpuController的update方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment"> * 修改数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> goods</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PutMapping(value=&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> Goods goods,<span class="meta">@PathVariable</span> String id)</span></span>&#123;</span><br><span class="line">    spuService.update(goods);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Result(<span class="keyword">true</span>,StatusCode.OK,<span class="string">&quot;修改成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SPU%E4%B8%8ESKU/" rel="tag">SPU与SKU</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2019/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/shujujg/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            二叉树
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2019/11/04/%E6%96%87%E4%BB%B6/fastDFS/fastDFS/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">FastDFS</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "B930dASMl8AivIQlQp9hVVtO-gzGzoHsz",
+    app_key: "WwsXDv9Vdc5BzBNUc5HzKLj2",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2018-2021
+        <i class="ri-heart-fill heart_icon"></i> WangYinggang
+      </li>
+    </ul>
+    
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="WinGone&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/1.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/2.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
