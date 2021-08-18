@@ -5183,7 +5183,7 @@
 <h3 id="6-重新启动network"><a href="#6-重新启动network" class="headerlink" title="6 .重新启动network"></a>6 .重新启动network</h3><p>systemctl restart network</p>
 <p>改好后保存退出，出去后输入命令  ifconfig查看ip地址</p>
 <p><img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/7.png" alt="img"></p>
-<p> 可以输入ping <a href="http://www.baidu.com看看是否能ping通百度,下面个的图片已经可以ping通百度了,这时候按ctrl+z键可以停止/">www.baidu.com看看是否能ping通百度，下面个的图片已经可以ping通百度了，这时候按ctrl+Z键可以停止</a></p>
+<p> 可以输入ping baidu看看是否能ping通百度，下面个的图片已经可以ping通百度了，这时候按ctrl+Z键可以停止</p>
 <p><img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/8.png" alt="img"></p>
 ]]></content>
       <tags>
