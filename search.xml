@@ -5159,32 +5159,4 @@
         <tag>fastjson</tag>
       </tags>
   </entry>
-  <entry>
-    <title>linux静态地址</title>
-    <url>/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/</url>
-    <content><![CDATA[<h1 id="linux静态地址"><a href="#linux静态地址" class="headerlink" title="linux静态地址"></a>linux静态地址</h1><h3 id="1、以管理员的身份打开虚拟机，点击导航栏上面的-编辑–-gt-虚拟网络编辑器"><a href="#1、以管理员的身份打开虚拟机，点击导航栏上面的-编辑–-gt-虚拟网络编辑器" class="headerlink" title="1、以管理员的身份打开虚拟机，点击导航栏上面的  编辑–&gt;虚拟网络编辑器"></a>1、以管理员的身份打开虚拟机，点击导航栏上面的  编辑–&gt;虚拟网络编辑器</h3><p>​       <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/70.png" alt="img"></p>
-<h3 id="2、首先选中上面的VMnet8，在到下面的子网-ip-处编辑ip地址，可以改成192-168-8-0，最后点击右边的-NAT设置"><a href="#2、首先选中上面的VMnet8，在到下面的子网-ip-处编辑ip地址，可以改成192-168-8-0，最后点击右边的-NAT设置" class="headerlink" title="2、首先选中上面的VMnet8，在到下面的子网 ip 处编辑ip地址，可以改成192.168.8.0，最后点击右边的 NAT设置"></a>2、首先选中上面的VMnet8，在到下面的子网 ip 处编辑ip地址，可以改成192.168.8.0，最后点击右边的 NAT设置</h3><p>   <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/71.png" alt="img"></p>
-<h3 id="3、在NAT中设置网关-i-p，可以改成-192-168-8-2，最后点击确定就可以了，虚拟机的ip地址编辑就此结束，接下来就是到电脑的网卡中编辑ip地址了"><a href="#3、在NAT中设置网关-i-p，可以改成-192-168-8-2，最后点击确定就可以了，虚拟机的ip地址编辑就此结束，接下来就是到电脑的网卡中编辑ip地址了" class="headerlink" title="3、在NAT中设置网关  i p，可以改成 192.168.8.2，最后点击确定就可以了，虚拟机的ip地址编辑就此结束，接下来就是到电脑的网卡中编辑ip地址了"></a>3、在NAT中设置网关  i p，可以改成 192.168.8.2，最后点击确定就可以了，虚拟机的ip地址编辑就此结束，接下来就是到电脑的网卡中编辑ip地址了</h3><p>​      <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/72.png" alt="img"></p>
-<h3 id="4、可以直接在电脑的任务栏中选中网络那里右键打开-网络和共享中心，在左边点击-更改适配器设置，然后右键选属性打开-VMare-Network-Adapter-VMnet8-在打开的页面上选-Internet协议版本4，点击属性，在打开的页面选择-使用下面的ip地址-，ip地址可以填192-168-8-1-默认网关必须与前面的第三步配好的网关ip一致也就是-192-168-8-2，就此虚拟机的固定ip地址就配完了"><a href="#4、可以直接在电脑的任务栏中选中网络那里右键打开-网络和共享中心，在左边点击-更改适配器设置，然后右键选属性打开-VMare-Network-Adapter-VMnet8-在打开的页面上选-Internet协议版本4，点击属性，在打开的页面选择-使用下面的ip地址-，ip地址可以填192-168-8-1-默认网关必须与前面的第三步配好的网关ip一致也就是-192-168-8-2，就此虚拟机的固定ip地址就配完了" class="headerlink" title="4、可以直接在电脑的任务栏中选中网络那里右键打开 网络和共享中心，在左边点击 更改适配器设置，然后右键选属性打开 VMare Network Adapter VMnet8, 在打开的页面上选  Internet协议版本4，点击属性，在打开的页面选择 使用下面的ip地址 ，ip地址可以填192.168.8.1  默认网关必须与前面的第三步配好的网关ip一致也就是  192.168.8.2，就此虚拟机的固定ip地址就配完了"></a>4、可以直接在电脑的任务栏中选中网络那里右键打开 网络和共享中心，在左边点击 更改适配器设置，然后右键选属性打开 VMare Network Adapter VMnet8, 在打开的页面上选  Internet协议版本4，点击属性，在打开的页面选择 使用下面的ip地址 ，ip地址可以填192.168.8.1  默认网关必须与前面的第三步配好的网关ip一致也就是  192.168.8.2，就此虚拟机的固定ip地址就配完了</h3><h3 id><a href="#" class="headerlink" title></a></h3><p>​        <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/3.png" alt="img"></p>
-<p>​        <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/4.png" alt="img"></p>
-<p>  <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/5.png" alt="img"></p>
-<p>​        <img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/6.png" alt="img"></p>
-<h3 id="5、到linux操作系统中输入命令"><a href="#5、到linux操作系统中输入命令" class="headerlink" title="5、到linux操作系统中输入命令"></a>5、到linux操作系统中输入命令</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim  /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
-
-<p>有些修改</p>
-<p>ifcfg-eth0 vim /etc/sysconfig/network-scripts/ifcfg-eth0</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=<span class="keyword">static</span></span><br><span class="line">IPADDR=<span class="number">192.168</span><span class="number">.8</span><span class="number">.129</span></span><br><span class="line">NETMASK=<span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line">GATEWAY=<span class="number">192.168</span><span class="number">.8</span><span class="number">.2</span></span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens33</span><br><span class="line">UUID=8c5cddae-2eca-<span class="number">4e3d</span>-<span class="number">9985</span>-647fa53e7476</span><br><span class="line">DEVICE=ens33</span><br><span class="line">ONBOOT=<span class="keyword">true</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>把下面的两条修改成如下 ip 地址</p>
-<p>​      IPADDR：192.168.8.101</p>
-<p>​      GATEWAY：192.168.8.254</p>
-<h3 id="6-重新启动network"><a href="#6-重新启动network" class="headerlink" title="6 .重新启动network"></a>6 .重新启动network</h3><p>systemctl restart network</p>
-<p>改好后保存退出，出去后输入命令  ifconfig查看ip地址</p>
-<p><img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/7.png" alt="img"></p>
-<p> 可以输入ping baidu看看是否能ping通百度，下面个的图片已经可以ping通百度了，这时候按ctrl+Z键可以停止</p>
-<p><img src="/2020/12/09/%E8%99%9A%E6%8B%9F%E6%9C%BA/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/linux%E9%9D%99%E6%80%81%E5%9C%B0%E5%9D%80/8.png" alt="img"></p>
-]]></content>
-  </entry>
 </search>
